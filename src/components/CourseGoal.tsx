@@ -20,18 +20,20 @@ type MyCourseGoalProps = PropsWithChildren<{ title: string; }>;
 
 
 interface MyCourseGoalProps {
+    id: number;
     title:string; 
     children:ReactNode;
+    onDelete:  (id: number) => void;
 }
 
 // FC stands for Functional Component
-const CourseGoal: FC<MyCourseGoalProps> = ( {title, children}) => {
+const CourseGoal: FC<MyCourseGoalProps> = ( {id, title, children, onDelete}) => {
     return (<article>
         <div>
             <h2>{title}</h2>
             <p>{children}</p>
         </div>
-        <button>Delete</button>
+        <button onClick={() => onDelete(id)}>Delete</button>
     </article>
    );
 }
